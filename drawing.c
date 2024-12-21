@@ -6,7 +6,7 @@
 /*   By: aharder <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:05:04 by aharder           #+#    #+#             */
-/*   Updated: 2024/12/20 16:42:43 by aharder          ###   ########.fr       */
+/*   Updated: 2024/12/21 14:35:24 by aharder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	pixel_put(t_vars *data, int x, int y, int color)
 	char	*dst;
 
 	dst = NULL;
+	if (!data->addr) {
+ 	   fprintf(stderr, "data->addr is uninitialized!\n");
+ 	   return;
+}
 	if (x >= 0 && x < 1920 && y >= 0 && y < 1080)
 	{
 		dst = data->addr + (y * data->line + x * (data->bpp / 8));

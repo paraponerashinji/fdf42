@@ -12,6 +12,19 @@
 
 #include "fdfheader.h"
 
+void	free_map(t_map map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map.sizey)
+	{
+		free(map.alt[i]);
+		i++;
+	}
+	free(map.alt);
+}
+
 t_map	get_size(char *file)
 {
 	int		fd;
@@ -32,6 +45,7 @@ t_map	get_size(char *file)
 			free(splittedline[map.sizex]);
 			map.sizex++;
 		}
+		free(splittedline);
 		map.sizey++;
 		line = get_next_line(fd);
 	}
@@ -45,7 +59,7 @@ int	*parse_line(char *line, int size)
 	char	**splittedline;
 	int		i;
 
-	alt_line = malloc(size * sizeof(int));
+	alt_line = ft_calloc(size, sizeof(int));
 	if (!alt_line)
 		return (NULL);
 	splittedline = ft_split(line, ' ');
@@ -68,7 +82,7 @@ t_map	getmap(char *file)
 	int		i;
 
 	map = get_size(file);
-	map.alt = malloc((map.sizey + 1) * sizeof(int *));
+	map.alt = ft_calloc(map.sizey + 1, sizeof(int *));
 	fd = open(file, O_RDONLY);
 	i = 0;
 	file = get_next_line(fd);

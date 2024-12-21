@@ -18,6 +18,7 @@ int	key_hook(int keycode, t_vars *vars)
 	if (keycode == 65307)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
+		free_map(vars->map);
 		exit(0);
 	}
 	if (keycode == 65362)

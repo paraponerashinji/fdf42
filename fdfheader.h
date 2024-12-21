@@ -35,7 +35,6 @@ typedef struct s_coords
 {
 	int	x;
 	int	y;
-	int	z;
 }	t_coords;
 
 typedef struct s_utils
@@ -71,7 +70,7 @@ void		printmap(t_map map);
 
 // getmap.c || Parsing the file to put the map in an array
 t_map		getmap(char *file); // TODO cleaning and map error handling
-
+void	free_map(t_map map);
 // colors.c || Manipulating rgb colors
 int			create_trgb(int t, int r, int g, int b);
 int			get_t(int trgb);
