@@ -82,7 +82,7 @@ t_map	getmap(char *file)
 	int		i;
 
 	map = get_size(file);
-	map.alt = ft_calloc(map.sizey + 1, sizeof(int *));
+	map.alt = ft_calloc((map.sizey + 1), sizeof(int *));
 	fd = open(file, O_RDONLY);
 	i = 0;
 	file = get_next_line(fd);

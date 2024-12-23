@@ -17,7 +17,9 @@ int	key_hook(int keycode, t_vars *vars)
 	printf("Keycode : %d\n", keycode);
 	if (keycode == 65307)
 	{
+		mlx_destroy_image(vars->mlx, vars->img);
 		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_display(vars->mlx);
 		free_map(vars->map);
 		exit(0);
 	}
