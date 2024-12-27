@@ -72,8 +72,7 @@ void	draw_tile(t_vars *d, t_map map, t_coords c, float size)
 
 	while (d->utils.j < map.sizex)
 	{
-		if (d->utils.i < map.sizey && d->utils.j < map.sizex)
-			alt0 = map.alt[d->utils.i][d->utils.j] * (size / 3);
+		alt0 = map.alt[d->utils.i][d->utils.j] * (size / 3);
 		if (d->utils.j != map.sizex - 1)
 		{
 			alt1 = map.alt[d->utils.i][d->utils.j + 1] * (size / 3);
