@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.c                                             :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aharder <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/19 12:28:51 by aharder           #+#    #+#             */
-/*   Updated: 2024/12/19 17:56:14 by aharder          ###   ########.fr       */
+/*   Created: 2024/12/16 13:52:44 by aharder           #+#    #+#             */
+/*   Updated: 2024/12/16 13:54:51 by aharder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_coords	projectpoint(int x, int y, t_vars vars)
-{
-	t_coords	coords;
+#include "../fdfheader.h"
 
-	coords.z = vars->map->alt[x][y]
-	coords.x = x;
-	coords.y = y;
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	rotate_x(int *y, int *z, double x_perspective)
+int	get_t(int trgb)
 {
+	return ((trgb >> 24) & 0xFF);
 }
 
-void	rotate_y(int *x, int *z, double y_perspective)
+int	get_r(int trgb)
 {
+	return ((trgb >> 16) & 0xFF);
 }
 
-void	rotate_z(int *x, int *y, double z_perspective)
+int	get_g(int trgb)
 {
+	return ((trgb >> 8) & 0xFF);
+}
+
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdfheader.h"
+#include "../fdfheader.h"
 
 int	key_hook(int keycode, t_vars *vars)
 {
@@ -20,8 +20,8 @@ int	key_hook(int keycode, t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->img);
 		mlx_destroy_window(vars->mlx, vars->win);
 		mlx_destroy_display(vars->mlx);
-		free_map(vars->map);
 		free(vars->mlx);
+		free_map(vars->map);
 		exit(0);
 	}
 	if (keycode == 65362)

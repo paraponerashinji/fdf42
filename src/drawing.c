@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdfheader.h"
+#include "../fdfheader.h"
 
 void	pixel_put(t_vars *data, int x, int y, int color)
 {
@@ -69,24 +69,27 @@ void	draw_tile(t_vars *d, t_map map, t_coords c, float size)
 	int	alt0;
 	int	alt1;
 	int	alt2;
+	int	sizex;
 
+	sizex = size * 2 * tan(3.14/6);
 	while (d->utils.j < map.sizex)
 	{
-		alt0 = map.alt[d->utils.i][d->utils.j] * (size / 3);
+		if (d->utils.i < map.sizey && d->utils.j < map.sizex)
+			alt0 = map.alt[d->utils.i][d->utils.j] * (sizex);
 		if (d->utils.j != map.sizex - 1)
 		{
-			alt1 = map.alt[d->utils.i][d->utils.j + 1] * (size / 3);
+			alt1 = map.alt[d->utils.i][d->utils.j + 1] * (sizex);
 			drawline(d, coords(c.x, c.y - alt0),
-				coords(c.x + 2 * size, c.y - alt1 - size));
+				coords(c.x + 2 * size, c.y - alt1 - sizex));
 		}
 		if (d->utils.i != map.sizey - 1)
 		{
-			alt2 = map.alt[d->utils.i + 1][d->utils.j] * (size / 3);
+			alt2 = map.alt[d->utils.i + 1][d->utils.j] * (sizex);
 			drawline(d, coords(c.x, c.y - alt0),
-				coords(c.x + size * 2, c.y - alt2 + size));
+				coords(c.x + size * 2, c.y - alt2 + sizex));
 		}
 		c.x += size * 2;
-		c.y -= size;
+		c.y -= sizex;
 		d->utils.j++;
 	}
 }
@@ -99,7 +102,7 @@ void	generategrid(t_vars *data, t_map map, float size)
 	int	sizex;
 
 	sizex = 2 * size;
-	sizey = sizex / 2;
+	sizey = sizex * tan(3.14/6);
 	x = data->defaultx;
 	y = data->defaulty;
 	data->utils.i = 0;

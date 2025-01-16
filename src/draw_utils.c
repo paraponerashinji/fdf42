@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aharder <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 13:52:44 by aharder           #+#    #+#             */
-/*   Updated: 2024/12/16 13:54:51 by aharder          ###   ########.fr       */
+/*   Created: 2024/12/20 16:38:06 by aharder           #+#    #+#             */
+/*   Updated: 2024/12/20 16:41:57 by aharder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdfheader.h"
+#include "../fdfheader.h"
 
-int	create_trgb(int t, int r, int g, int b)
+void	draw_pixel(t_vars *data, int x, float y)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int	get_t(int trgb)
-{
-	return ((trgb >> 24) & 0xFF);
-}
-
-int	get_r(int trgb)
-{
-	return ((trgb >> 16) & 0xFF);
-}
-
-int	get_g(int trgb)
-{
-	return ((trgb >> 8) & 0xFF);
-}
-
-int	get_b(int trgb)
-{
-	return (trgb & 0xFF);
+	if (data->utils.steep)
+	{
+		pixel_put(data, (int)y - 1, x, color(40, 255, 0, 1 - fpart(y)));
+		pixel_put(data, (int)y, x, color(40, 255, 0, fpart(y)));
+	}
+	else
+	{
+		pixel_put(data, x, (int)y - 1, color(40, 255, 0, 1 - fpart(y)));
+		pixel_put(data, x, (int)y, color(40, 255, 0, fpart(y)));
+	}
 }

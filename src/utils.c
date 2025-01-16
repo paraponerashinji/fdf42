@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdfheader.h"
+#include "../fdfheader.h"
 
 t_coords	coords(int x, int y)
 {

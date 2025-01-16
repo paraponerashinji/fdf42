@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdfheader.h"
+#include "../fdfheader.h"
 
 void	free_map(t_map map)
 {
@@ -65,7 +65,7 @@ int	*parse_line(char *line, int size)
 	splittedline = ft_split(line, ' ');
 	free(line);
 	i = 0;
-	while (splittedline[i])
+	while (splittedline[i] != NULL)
 	{
 		alt_line[i] = ft_atoi(splittedline[i]);
 		free(splittedline[i]);
