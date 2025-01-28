@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <fcntl.h>
+#include <math.h>
 #include "mlx.h"
 #include "get_next_line.h"
 #include "libft.h"
