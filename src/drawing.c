@@ -18,7 +18,7 @@ void	pixel_put(t_vars *data, int x, int y, int color)
 
 	dst = NULL;
 	if (!data->addr) {
- 	   fprintf(stderr, "data->addr is uninitialized!\n");
+ 	   ft_printf("data->addr is uninitialized!\n");
  	   return;
 }
 	if (x >= 0 && x < 1920 && y >= 0 && y < 1080)
