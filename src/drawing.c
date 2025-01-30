@@ -6,7 +6,7 @@
 /*   By: aharder <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:05:04 by aharder           #+#    #+#             */
-/*   Updated: 2024/12/22 17:16:41 by aharder          ###   ########.fr       */
+/*   Updated: 2025/01/30 15:35:10 by aharder          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ void	pixel_put(t_vars *data, int x, int y, int color)
 	char	*dst;
 
 	dst = NULL;
-	if (!data->addr) {
- 	   ft_printf("data->addr is uninitialized!\n");
- 	   return;
-}
+	if (!data->addr)
+	{
+		ft_printf("data->addr is uninitialized!\n");
+		return ;
+	}
 	if (x >= 0 && x < 1920 && y >= 0 && y < 1080)
 	{
 		dst = data->addr + (y * data->line + x * (data->bpp / 8));
@@ -71,11 +72,10 @@ void	draw_tile(t_vars *d, t_map map, t_coords c, float size)
 	int	alt2;
 	int	sizex;
 
-	sizex = size * 2 * tan(3.14/6);
+	sizex = size * 2 * tan(3.14 / 6);
 	while (d->utils.j < map.sizex)
 	{
-		if (d->utils.i < map.sizey && d->utils.j < map.sizex)
-			alt0 = map.alt[d->utils.i][d->utils.j] * (sizex);
+		alt0 = map.alt[d->utils.i][d->utils.j] * (sizex);
 		if (d->utils.j != map.sizex - 1)
 		{
 			alt1 = map.alt[d->utils.i][d->utils.j + 1] * (sizex);
@@ -102,7 +102,7 @@ void	generategrid(t_vars *data, t_map map, float size)
 	int	sizex;
 
 	sizex = 2 * size;
-	sizey = sizex * tan(3.14/6);
+	sizey = sizex * tan(3.14 / 6);
 	x = data->defaultx;
 	y = data->defaulty;
 	data->utils.i = 0;
