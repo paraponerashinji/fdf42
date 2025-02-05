@@ -104,3 +104,4 @@ void	rotate_z(int *x, int *y, double z_perspective);
 */
 // events.c
 int     key_hook(int keycode, t_vars *vars); // TODO cleaning in separate functions
+int	free_and_exit(t_vars *vars);

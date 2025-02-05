@@ -12,7 +12,7 @@
 
 #include "../fdfheader.h"
 
-void	free_and_exit(t_vars *vars)
+int	free_and_exit(t_vars *vars)
 {
 	mlx_destroy_image(vars->mlx, vars->img);
 	mlx_destroy_window(vars->mlx, vars->win);
@@ -38,7 +38,7 @@ void	horizontal_move(t_vars *vars, int x)
 
 void	vertical_move(t_vars *vars, int x)
 {
-	vars->defaultx + x;
+	vars->defaultx += x;
 	ft_bzero(vars->addr, 1920 * 1080 *(vars->bpp / 8));
 	generategrid(vars, vars->map, vars->size);
 }

@@ -32,6 +32,7 @@ void	createwindow(t_vars va)
 	va.addr = mlx_get_data_addr(va.img, &va.bpp, &va.line, &va.endian);
 	generategrid(&va, va.map, va.size);
 	mlx_hook(va.win, 2, 1L << 0, key_hook, &va);
+	mlx_hook(va.win, 17, 0, free_and_exit, &va);
 	mlx_loop(va.mlx);
 }
 
